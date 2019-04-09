@@ -20,16 +20,18 @@ function line(pos1, pos2) {
 }
 
 function z(position) {
-  return center
-    .sub(position)
-    .mult(
-      Math.sqrt(Math.pow(position.x, 2) + position.y) / 1000)
+  const x = position.x / 100;
+  const y = position.y / 100;
+
+  return position.mult(Math.sin(Math.pow(x, 3) * y));
+
+  // return center.sub(position);
 }
 
 // !!!!!!! //
 const particles = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 1000; i++) {
   particles[i] = new Particle(
     Math.random() * width,
     Math.random() * height,
@@ -40,16 +42,38 @@ for (let i = 0; i < 100; i++) {
 function draw() {
   requestAnimationFrame(draw);
   // clear();
+  // drawFiled();
+
   beginPath();
 
-  // particles.map((particle) => {
-  //   const returnedValue = z(particle.pos);
-  //   const limited = returnedValue.adjust(1);
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.05)";
 
-  //   particle.applyForce(limited);
-  //   particle.update();
-  //   particle.draw();
-  // });
+  particles.map((particle) => {
+    const returnedValue = z(particle.pos);
+    const limited = returnedValue.adjust(1);
+
+    particle.applyForce(limited);
+    particle.update();
+    particle.draw();
+  });
+
+  stroke();
+}
+
+function drawFiled() {
+  beginPath();
+  ctx.strokeStyle = "gray";
+
+  for (let y = 0; y < width; y += TILE_SIZE) {
+    for (let x = 0; x < width; x += TILE_SIZE) {
+      const position = new Vector(x, y);
+      const returnedValue = z(position);
+      const limited = returnedValue.adjust(TILE_SIZE);
+      const endpoint = position.add(limited);
+
+      line(position, endpoint);
+    }
+  }
 
   stroke();
 }
