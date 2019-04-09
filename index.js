@@ -6,6 +6,7 @@ const height = cnv.height;
 const halfWidth = width / 2;
 const halfHeight = height / 2;
 
+const TWO_PI = Math.PI * 2;
 const center = new Vector(halfWidth, halfHeight);
 
 const TILE_SIZE = 10;
@@ -20,12 +21,13 @@ function line(pos1, pos2) {
 }
 
 function z(position) {
-  const x = position.x / 100;
-  const y = position.y / 100;
+  const x = position.x / width;
+  const y = position.y / height;
 
-  return position.mult(Math.sin(Math.pow(x, 3) * y));
-
-  // return center.sub(position);
+  return new Vector(
+    Math.sin(x * 20),
+    Math.sin(y * 20)
+  );
 }
 
 // !!!!!!! //
@@ -43,7 +45,10 @@ function draw() {
   requestAnimationFrame(draw);
   // clear();
   // drawFiled();
+  drawPaths();
+}
 
+function drawPaths() {
   beginPath();
 
   ctx.strokeStyle = "rgba(0, 0, 0, 0.05)";
@@ -78,4 +83,6 @@ function drawFiled() {
   stroke();
 }
 
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, width, height);
 draw();
