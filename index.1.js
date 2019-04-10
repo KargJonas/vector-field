@@ -24,18 +24,28 @@ function z(position) {
   const x = position.x / width;
   const y = position.y / height;
 
-  const deltaPos = position.sub(center);
-  const delta = deltaPos.mag();
+  // return new Vector(
+  //   Math.sin(x * 20),
+  //   Math.sin(y * 20)
+  // );
+
+  const delta = position.sub(center).mag();
+  // const delta = position.sub(center);
 
   // return new Vector(
-  //   Math.sin(delta / 2 * x * y),
-  //   Math.cos(delta / 5 * x * y)
+  //   Math.cos(delta / 10),
+  //   Math.sin(delta / 10)
   // );
 
   return new Vector(
-    Math.cos(delta),
-    Math.sin(delta),
+    Math.sin(delta / 2 * x * y),
+    Math.cos(delta / 5 * y * x)
   );
+
+  // return new Vector(
+  //   Math.cos(y / x),
+  //   Math.cos(x / y)
+  // );
 }
 
 // !!!!!!! //
