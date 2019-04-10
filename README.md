@@ -1,6 +1,6 @@
 ### Vector-field
 
-This is a little "experiment" with particles which are influenced by a vector-field. The field is defined by a function, which takes two parameters (x, y) in and returns a vector.
+This is a little "experiment" with particles which are influenced by a vector-field. Wikipedia: "A vector field is an assignment of a vector to each point in a subset of space."
 
 ##### This video might give you some idea of what vector-fields are.
 https://www.youtube.com/watch?v=rB83DpBJQsE

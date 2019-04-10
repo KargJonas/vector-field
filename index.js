@@ -28,17 +28,19 @@ function z(position) {
     Math.sin(x * 20),
     Math.sin(y * 20)
   );
+
+  // return new Vector(
+  //   Math.cos(y / x),
+  //   Math.cos(x / y)
+  // );
 }
 
 // !!!!!!! //
 const particles = [];
 
-for (let i = 0; i < 1000; i++) {
-  particles[i] = new Particle(
-    Math.random() * width,
-    Math.random() * height,
-    1
-  );
+for (let i = 0; i < 50; i++) {
+  particles[i] = new Particle(0, 0, 1);
+  particles[i].random();
 }
 
 function draw() {
