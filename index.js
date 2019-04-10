@@ -21,12 +21,19 @@ function line(pos1, pos2) {
 }
 
 function z(position) {
-  const x = position.x / width;
-  const y = position.y / height;
+//   const x = position.x / width;
+//   const y = position.y / height;
+
+//   return new Vector(
+//     Math.sin(x * 20),
+//     Math.sin(y * 20)
+//   );
+
+  const delta = position.sub(center).mag();
 
   return new Vector(
-    Math.sin(x * 20),
-    Math.sin(y * 20)
+    Math.cos(delta / 10),
+    Math.sin(delta / 10)
   );
 
   // return new Vector(

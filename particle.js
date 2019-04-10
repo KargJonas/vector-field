@@ -23,12 +23,23 @@ class Particle {
     this.pos = this.pos.add(this.vel);
     this.acc = this.acc.mult(0);
 
+<<<<<<< HEAD
     if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > width || this.pos.y > height) {
       this.random();
     }
+=======
+    // if (this.pos.x < 0 || this.pos.x > width || this.pos.y < 0 || this.pos.y > height) {
+    //   this.random();
+    // }
+>>>>>>> d16e4f2a4dc600214ada1e1a7908533618aa09d6
   }
 
   draw() {
     line(this.lastPos, this.pos);
+  }
+
+  random() {
+    this.pos.x = Math.random() * width;
+    this.pos.y = Math.random() * height;
   }
 }
